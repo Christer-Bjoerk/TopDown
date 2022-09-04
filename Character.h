@@ -27,6 +27,6 @@ private:
 	float updateTime = 1.0f / 20.0f;
 	float speed = 4.0f;
 
-	float width{};
-	float height{};
+	float width = 0.0f;
+	float height = 0.0f;
 };
