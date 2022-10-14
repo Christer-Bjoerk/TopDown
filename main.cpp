@@ -17,7 +17,11 @@ int main()
 
 	Character knight{windowWidth, windowHeight};
 
-	Prop rock{ Vector2{0.0f,0.0f}, LoadTexture("nature_tileset/Rock.png")}; 
+	Prop props[2]
+	{
+		Prop { Vector2{600.0f, 300.0f}, LoadTexture("nature_tileset/Rock.png")},
+		Prop { Vector2{400.0f,500.0f}, LoadTexture("nature_tileset/Log.png")}
+	};
 
 	SetTargetFPS(60);
 	while (!WindowShouldClose())
@@ -30,9 +34,13 @@ int main()
 
 		// Draw map
 		DrawTextureEx(map, mapPos, 0.0, mapScale, WHITE);
+		
 
-		// Draw a prop
-		rock.Render(knight.getWorldPos());
+		// Draw props
+		for (auto prop : props)
+		{
+			prop.Render(knight.getWorldPos());
+		}
 
 		knight.tick(GetFrameTime()); 
 

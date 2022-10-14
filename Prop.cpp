@@ -10,7 +10,20 @@ Prop::Prop(Vector2 pos, Texture2D tex) :
 
 void Prop::Render(Vector2 knightPos) 
 {
-	// Render prop position based on the knight's position
+	// Render prop position based on the player's position
 	Vector2 screenPos{ Vector2Subtract(worldPos, knightPos) };
 	DrawTextureEx(texture, screenPos, 0.0f, scale, WHITE);
+}
+
+Rectangle Prop::GetCollisionRec(Vector2 knightPos) 
+{
+	Vector2 screenPos{ Vector2Subtract(worldPos, knightPos) };
+	return Rectangle
+	{
+		screenPos.x,
+		screenPos.y,
+		texture.width * scale,
+		texture.height * scale
+		
+	}
 }
