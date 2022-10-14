@@ -47,7 +47,7 @@ void Character::tick(float deltatime)
 	{
 		frame++;
 		runningTime = 0;
-		if (frame > maxFrames)frame = 0;
+		if (frame > maxFrames) frame = 0;
 	}
 
 	// Draw the character
