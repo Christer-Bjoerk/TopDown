@@ -4,10 +4,13 @@ class Character
 {
 public:
 	Character(int winWidth, int winHeight);
-	Vector2 getWorldPos() { return worldPos; }
-	void tick(float deltaTime);
 
+	Vector2 getWorldPos() { return worldPos; }
+
+	void tick(float deltaTime);
 	void undoMovement();
+
+	Rectangle getCollision();
 
 private:
 
