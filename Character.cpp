@@ -70,4 +70,4 @@ Rectangle Character::getCollision()
 		width * scale,
 		height * scale
 	};
-}
+} 
