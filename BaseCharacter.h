@@ -13,6 +13,8 @@ public:
 	void undoMovement();
 
 	Rectangle getCollision();
+
+	virtual void tick(float deltaTime);
 protected:
 	Texture2D texture = LoadTexture("characters/knight_idle_spritesheet.png");
 	Texture2D idle = LoadTexture("characters/knight_idle_spritesheet.png");
