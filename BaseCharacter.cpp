@@ -36,6 +36,25 @@ void BaseCharacter::tick(float deltatime)
 		if (frame > maxFrames) frame = 0;
 	}
 
+	if (Vector2Length(velocity) != 0.0)
+	{
+		// Set worldPos = worldPos + velocity
+		// Move the map
+		worldPos = Vector2Add(worldPos, Vector2Scale(Vector2Normalize(velocity), speed));
+
+		// Switch direction
+		velocity.x < 0.0f ? rightLeft = -1.0f : rightLeft = 1.0f;
+
+		// Change animation 
+		texture = run;
+	}
+	else
+	{
+		texture = idle;
+	}
+
+	velocity = {};
+
 	// Draw the character
 	Rectangle source{ frame * width, 0.0f, rightLeft * width, height };
 	Rectangle dest{ screenPos.x, screenPos.y, scale * width, scale * height };

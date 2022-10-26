@@ -33,11 +33,10 @@ protected:
 	int maxFrames = 6;
 	float updateTime = 1.0f / 20.0f;
 	float speed = 4.0f;
-
 	float width = 0.0f;
 	float height = 0.0f;
-
 	float scale = 4.0f;
+	Vector2 velocity{};
 private:
 
 };
