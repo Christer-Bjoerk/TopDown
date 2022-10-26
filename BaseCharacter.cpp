@@ -16,8 +16,8 @@ Rectangle BaseCharacter::getCollision()
 {
 	return Rectangle
 	{
-		screenPos.x,
-		screenPos.y,
+		getScreenPos().x,
+		getScreenPos().y,
 		width * scale,
 		height * scale
 	};
@@ -57,6 +57,6 @@ void BaseCharacter::tick(float deltatime)
 
 	// Draw the character
 	Rectangle source{ frame * width, 0.0f, rightLeft * width, height };
-	Rectangle dest{ screenPos.x, screenPos.y, scale * width, scale * height };
+	Rectangle dest{ getScreenPos().x, getScreenPos().y, scale * width, scale * height };
 	DrawTexturePro(texture, source, dest, Vector2{}, 0.0f, WHITE);
 }

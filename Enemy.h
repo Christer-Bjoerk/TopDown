@@ -10,6 +10,8 @@ public:
 	virtual void tick(float deltaTima) override;
 
 	void setTarget(Character* character) { target = character; }
+
+	virtual Vector2 getScreenPos() override;
 private:
 	Character* target;
 };
