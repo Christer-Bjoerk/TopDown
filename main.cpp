@@ -4,6 +4,7 @@
 #include "Character.h"
 #include "Prop.h"
 #include "Enemy.h"
+#include <string>
 
 int main() 
 {
@@ -49,6 +50,21 @@ int main()
 		for (auto prop : props)
 		{
 			prop.Render(knight.getWorldPos());
+		}
+
+		// Character is dead
+		if (!knight.getAlive())
+		{
+			DrawText("Game Over!", 55.0f, 45.0f, 40, RED);
+			EndDrawing();
+			continue;
+		}
+		// Character is alive
+		else
+		{
+			std::string knightsHealth = "Health: ";
+			knightsHealth.append(std::to_string(knight.getHealth()), 0, 5);
+			DrawText(knightsHealth.c_str(), 55.0f, 45.0f, 40, RED);
 		}
 
 		knight.tick(GetFrameTime()); 
