@@ -12,11 +12,14 @@ public:
 
 	void undoMovement();
 
-	Rectangle getCollision();
+	Rectangle getCollisionRec();
 
 	virtual void tick(float deltaTime);
 
 	virtual Vector2 getScreenPos() = 0;
+
+	bool getAlive() { return alive; }
+	void setAlive(bool isAlive) { alive = isAlive; }
 
 protected:
 	Texture2D texture = LoadTexture("characters/knight_idle_spritesheet.png");
@@ -30,17 +33,17 @@ protected:
 	float rightLeft = 1.0f;
 
 	// Animation variables
-	float runningTime = 0;
-	int frame = 0;
+	float runningTime{};
+	int frame{};
 	int maxFrames = 6;
 	float updateTime = 1.0f / 20.0f;
 	float speed = 4.0f;
-	float width = 0.0f;
-	float height = 0.0f;
+	float width{};
+	float height{};
 	float scale = 4.0f;
 	Vector2 velocity{};
 private:
-
+	bool alive{ true };
 };
 
 #endif

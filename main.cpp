@@ -26,7 +26,7 @@ int main()
 
 	Enemy goblin
 	{ 
-		Vector2{}, 
+		Vector2{800.0f, 300.0f}, 
 		LoadTexture("characters/goblin_idle_spritesheet.png"), 
 		LoadTexture("characters/goblin_run_spritesheet.png") 
 	};
@@ -66,13 +66,21 @@ int main()
 		// Check prop collision
 		for (auto prop : props)
 		{
-			if (CheckCollisionRecs(prop.getCollisionRec(knight.getWorldPos()), knight.getCollision()))
+			if (CheckCollisionRecs(prop.getCollisionRec(knight.getWorldPos()), knight.getCollisionRec()))
 			{
 				knight.undoMovement();
 			}
 		}
 
 		goblin.tick(GetFrameTime());
+
+		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+		{
+			if (CheckCollisionRecs(goblin.getCollisionRec(), knight.getCollisionRec()));
+			{
+				goblin.setAlive(false);
+			}
+		}
 
 		EndDrawing();
 	}

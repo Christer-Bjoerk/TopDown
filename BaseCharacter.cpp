@@ -12,7 +12,7 @@ void BaseCharacter::undoMovement()
 	worldPos = worldPosLastFrame;
 }
 
-Rectangle BaseCharacter::getCollision()
+Rectangle BaseCharacter::getCollisionRec()
 {
 	return Rectangle
 	{
@@ -33,7 +33,9 @@ void BaseCharacter::tick(float deltatime)
 	{
 		frame++;
 		runningTime = 0;
-		if (frame > maxFrames) frame = 0;
+
+		if (frame > maxFrames) 
+			frame = 0;
 	}
 
 	if (Vector2Length(velocity) != 0.0)
