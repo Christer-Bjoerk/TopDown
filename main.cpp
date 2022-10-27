@@ -44,7 +44,6 @@ int main()
 
 		// Draw map
 		DrawTextureEx(map, mapPos, 0.0, mapScale, WHITE);
-		
 
 		// Draw props
 		for (auto prop : props)
@@ -76,7 +75,7 @@ int main()
 
 		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 		{
-			if (CheckCollisionRecs(goblin.getCollisionRec(), knight.getCollisionRec()));
+			if (CheckCollisionRecs(goblin.getCollisionRec(), knight.getWeaponCollisionRec()));
 			{
 				goblin.setAlive(false);
 			}
