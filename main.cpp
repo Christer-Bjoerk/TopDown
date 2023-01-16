@@ -4,6 +4,7 @@
 #include "Prop.h"
 #include "Enemy.h"
 #include <string>
+#include <vector>
 
 int main() 
 {
@@ -40,6 +41,8 @@ int main()
         enemy->setTarget(&knight);
     }
 
+    int defeatedEnemies = 0;
+
     SetTargetFPS(60);
     while (!WindowShouldClose())
     {
@@ -50,6 +53,7 @@ int main()
 
         // Draw Map
         DrawTextureEx(map, mapPos, 0.0, 4.0, WHITE);
+
 
         // Draw the props
         for (auto prop : props) 
@@ -63,10 +67,13 @@ int main()
             EndDrawing();
             continue;
         }
-        else
+        else if(knight.getAlive())
         {
-            std::string knightsHealth = "Health: ";
-            knightsHealth.append(std::to_string(knight.getHealth()), 0.5);
+            // Draw text
+            std::string knightsHealth = "Health:";
+            knightsHealth.append(std::to_string(knight.getHealth()), 0, 5);
+
+            DrawText(knightsHealth.c_str(), 55, 30, 40, RED);
         }
 
         knight.tick(GetFrameTime());
@@ -91,6 +98,16 @@ int main()
         for (auto enemy : enemies)
         {
             enemy->tick(GetFrameTime());
+
+            // if all enemies are dead
+            // player has won the game
+
+            if (defeatedEnemies >= 2)
+            {
+                DrawText("Won", 100, 55, 40, RED);
+                continue;
+            }
+
         }
 
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
@@ -100,6 +117,7 @@ int main()
                 if (CheckCollisionRecs(enemy->getCollisionRec(), knight.getWeaponCollisionRec())) 
                 {
                     enemy->setAlive(false);
+                    defeatedEnemies++;
                 }
             }
         }
