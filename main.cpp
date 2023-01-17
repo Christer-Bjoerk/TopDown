@@ -103,7 +103,7 @@ int main()
             // player has won the game
             if (defeatedEnemies >= 2)
             {
-                DrawText("Won", 100, 55, 40, RED);
+                DrawText("You Won", 150, 100, 40, RED);
                 continue;
             }
         }
