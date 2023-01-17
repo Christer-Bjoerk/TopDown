@@ -99,15 +99,13 @@ int main()
         {
             enemy->tick(GetFrameTime());
 
-            // if all enemies are dead
+            // If all enemies are dead
             // player has won the game
-
             if (defeatedEnemies >= 2)
             {
                 DrawText("Won", 100, 55, 40, RED);
                 continue;
             }
-
         }
 
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
